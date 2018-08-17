@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>camera-API-test!</title>
+    <link rel=stylesheet type="text/css" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.3.2/adapter.min.js"></script>
+    <script src="js/main.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+    <video id="video" autoplay>
+    </video>
+    <form method=post action=/scan-image class=CameraFallback-form>
+        <input type=file accept=image/* capture=camera id=qrcode-input name=qrcode class=CameraFallback-input>
+        <label for=qrcode-input>
+            <img src=/images/ic_file_upload_24px.svg>
+        </label>
+        <img class=CameraFallback-image>
+    </form>
+</body>
+<script type="text/javascript">  
+    var cameraContext = navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+    }).then(function (stream) {
+        /* use the stream */
+        var video = document.getElementById('video')
+        video.src = window.URL.createObjectURL(stream)
+        video.onloadedmetadata = function (e) {
+            console.log("Label: " + stream.label)
+            console.log("AudioTracks", stream.getAudioTracks())
+            console.log("VideoTracks", stream.getVideoTracks())
+        }
+    }).catch(function (err) {
+        /* handle the error */
+        console.log('Reeeejected!',err)
+    })
+</script>
+
+</html>
