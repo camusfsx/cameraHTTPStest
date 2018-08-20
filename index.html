@@ -12,13 +12,28 @@
 </head>
 
 <body>
-    <video id="video" autoplay>
-    </video>
-    <form method=post action=/scan-image class=cameraForm>
-        <input type=file accept=image/* capture=camera id=input class=cameraInput>
-        <img class=cameraImage>
-    </form>
-    <button id="cameraFlip">更改摄像头</button>
+    <header>
+        <h5>请拿起手机</h5>
+        <h5>保证您的面部全部置于下方的圆形区域内3秒</h5>
+        <h5>茄子</h5>
+    </header>
+
+    <section class="cameraZoom">
+        <video id="video" autoplay>
+        </video>
+        <form method=post action=/scan-image class=cameraForm>
+            <input type=file accept=image/* capture=camera id=inputButton class=cameraInput>
+        </form>
+    </section>
+
+    <footer>
+        <button id="cameraFlip">更改摄像头</button>
+    </footer>
+
 </body>
+<script>
+    let pageWidth = window.innerWidth / 6.4
+    document.write(`<style>html{font-size:${pageWidth}px}</style>`)
+</script>
 
 </html>

@@ -2,14 +2,15 @@ var front = true
 initCameraContext()
 document.getElementById('cameraFlip').onclick = () => {
     front = !front
-    initCameraContext();
+    initCameraContext()
 }
+
 function initCameraContext(){
     var cameraContext = navigator.mediaDevices.getUserMedia({
         video: {
-            width: { min: 400, max: 1920 },
-            height: { min: 300, max: 1080 },
-            facingMode: (front ? "user" : "environment"),//or "environment" 此变量对surface暂时无效
+            width: { min: 400, max: 1080 },
+            height: { min: 400, max: 1080 },
+            facingMode: (front ? "user" : "environment"),//or "environment" 此变量对桌面端surface暂时无效,但对移动端设备有效
             frameRate: { ideal: 10, max: 24 }//ideal会影响到正反摄像头的选取
         },
         audio: true
@@ -17,6 +18,7 @@ function initCameraContext(){
         var video = document.getElementById('video')
         var front = false
         video.srcObject = stream
+        console.dir(video.srcObject)
         video.onloadedmetadata = function (e) {
             console.log("AudioTracks", stream.getAudioTracks())
             console.log("VideoTracks", stream.getVideoTracks())

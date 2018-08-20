@@ -1,7 +1,36 @@
-video{
-    max-width: 800px;
-    max-height: 600px;
+* {
+  margin: 0;
+  padding: 0;
 }
-.cameraInput{
-    display: none;
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 16px;
+}
+header {
+  padding-left: 1.5rem;
+  border: 1px solid black;
+}
+.cameraZoom {
+  position: relative;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  overflow: hidden;
+  border: 1px solid red;
+}
+.cameraForm {
+  display: none;
+}
+#cameraFlip {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+#video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
