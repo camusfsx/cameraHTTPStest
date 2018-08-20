@@ -10,10 +10,14 @@ body{
     display: flex;
     flex-flow:column nowrap;
     font-size: 16px;
+    background-color: #ccc;
 }
 header{
-    .px2rem(padding-left,150);
-    border:1px solid rgb(235, 93, 93);
+    .px2rem(margin-top,100);
+    .px2rem(margin-bottom,100);
+}
+header>h3{
+    text-align:center;
 }
 .cameraZoom{
     position: relative;
@@ -39,4 +43,10 @@ header{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+}
+footer{
+    display: flex;
+    justify-content: center;
+    .px2rem(margin-top,100);
+    .px2rem(margin-bottom,100);
 }
