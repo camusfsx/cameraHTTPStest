@@ -8,9 +8,10 @@
 }
 body{
     display: flex;
-    flex-flow:column nowrap;
+    flex-flow:column wrap;
     font-size: 16px;
-    background-color: #ccc;
+    word-break: keep-all;
+    background-color: #eee;
 }
 header{
     .px2rem(margin-top,100);
@@ -23,20 +24,15 @@ header>h3{
     position: relative;
     margin: 0 auto;
     border-radius: 50%;
-    .px2rem(width, 400);
-    .px2rem(height,400);
+    .px2rem(width, 500);
+    .px2rem(height,500);
     overflow: hidden;
     background-color: black;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     box-shadow: 0px 0px 5px 3px rgba(32,247,104,1);
 }    
 .cameraForm{
     display: none;
-}
-#cameraFlip{
-    .px2rem(width,50);
-    .px2rem(height,50);
-    border-radius: 50%;
 }
 #video{
     position: absolute;
@@ -49,4 +45,11 @@ footer{
     justify-content: center;
     .px2rem(margin-top,100);
     .px2rem(margin-bottom,100);
+}
+footer>#cameraFlip{
+    .px2rem(width,50);
+    .px2rem(height,50);
+    border-radius: 10px;
+    background-color:#c0f0d0;
+    box-shadow: 0px 0px 2px 0px rgb(4, 5, 4);
 }

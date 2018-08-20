@@ -4,9 +4,10 @@
 }
 body {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column wrap;
   font-size: 16px;
-  background-color: #ccc;
+  word-break: keep-all;
+  background-color: #eee;
 }
 header {
   margin-top: 1rem;
@@ -19,20 +20,15 @@ header > h3 {
   position: relative;
   margin: 0 auto;
   border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   overflow: hidden;
   background-color: black;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   box-shadow: 0px 0px 5px 3px #20f768;
 }
 .cameraForm {
   display: none;
-}
-#cameraFlip {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
 }
 #video {
   position: absolute;
@@ -45,4 +41,11 @@ footer {
   justify-content: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+footer > #cameraFlip {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 10px;
+  background-color: #c0f0d0;
+  box-shadow: 0px 0px 2px 0px #040504;
 }
