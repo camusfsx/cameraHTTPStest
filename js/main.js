@@ -16,8 +16,8 @@ function initCameraContext(){
         audio: true
     }).then(function (stream) {
         var video = document.getElementById('video')
-        var front = false
         video.srcObject = stream
+        video.play()
         console.dir(video.srcObject)
         video.onloadedmetadata = function (e) {
             console.log("AudioTracks", stream.getAudioTracks())
