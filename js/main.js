@@ -1,4 +1,6 @@
+var ctracker = new clm.tracker()
 var front = true
+ctracker.init()
 initCameraContext()
 document.getElementById('cameraFlip').onclick = () => {
     front = !front
@@ -14,25 +16,28 @@ function initCameraContext() {
         },
         audio: false
     }).then(function (stream) {
-        var video = document.getElementById('video')
+        var video = document.getElementById(`video`)
         video.srcObject = stream
         video.onloadedmetadata = function (e) {
-            console.log("AudioTracks", stream.getAudioTracks())
             console.log("VideoTracks", stream.getVideoTracks())
-        }
-        var ctracker = new clm.tracker()
-        ctracker.init()
-        ctracker.start(video)
-        positionLoop()
-        function positionLoop() {
-            requestAnimationFrame(positionLoop)
-            var positions = ctracker.getCurrentPosition()
-            console.log(positions)
+            ctracker.start(video)
+            positionLoop()
+            function positionLoop() {
+                requestAnimationFrame(positionLoop)
+                var positions = ctracker.getCurrentPosition()
+                console.log(positions)
+            }
         }
     }).catch(function (err) {
         console.log('Rejected!', err)
     })
 }
 
-
+if (navigator.mediaDevices) {
+    console.log(`browser support`)
+} else if (navigator.getUserMedia) {
+    console.log(`browser support`)
+} else {
+    alert(`Your browser does not seem to support getUserMedia`)
+}
 
