@@ -4,8 +4,7 @@ document.getElementById('cameraFlip').onclick = () => {
     front = !front
     initCameraContext()
 }
-
-function initCameraContext(){
+function initCameraContext() {
     var cameraContext = navigator.mediaDevices.getUserMedia({
         video: {
             //width: { min: 800, max: 1920 },
@@ -15,15 +14,25 @@ function initCameraContext(){
         },
         audio: false
     }).then(function (stream) {
-        var video = document.getElementById('video')
+        var video = document.getElementById('inputvideo')
         video.srcObject = stream
         console.dir(video.srcObject)
         video.onloadedmetadata = function (e) {
             console.log("AudioTracks", stream.getAudioTracks())
             console.log("VideoTracks", stream.getVideoTracks())
         }
+        var ctracker = new clm.tracker()
+        ctracker.init()
+        ctracker.start(videoInput)
+        function positionLoop() {
+            requestAnimationFrame(positionLoop)
+            var positions = ctracker.getCurrentPosition()
+        }
+        positionLoop()
     }).catch(function (err) {
         console.log('Rejected!', err)
     })
 }
+
+
 
