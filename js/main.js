@@ -14,7 +14,7 @@ function initCameraContext() {
         },
         audio: false
     }).then(function (stream) {
-        var video = document.getElementById('inputvideo')
+        var video = document.getElementById('inputVideo')
         video.srcObject = stream
         console.dir(video.srcObject)
         video.onloadedmetadata = function (e) {
@@ -23,10 +23,11 @@ function initCameraContext() {
         }
         var ctracker = new clm.tracker()
         ctracker.init()
-        ctracker.start(videoInput)
+        ctracker.start(video)
         function positionLoop() {
             requestAnimationFrame(positionLoop)
             var positions = ctracker.getCurrentPosition()
+            console.log(positions)
         }
         positionLoop()
     }).catch(function (err) {
