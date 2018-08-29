@@ -14,9 +14,8 @@ function initCameraContext() {
         },
         audio: false
     }).then(function (stream) {
-        var video = document.getElementById('inputVideo')
+        var video = document.getElementById('video')
         video.srcObject = stream
-        console.dir(video.srcObject)
         video.onloadedmetadata = function (e) {
             console.log("AudioTracks", stream.getAudioTracks())
             console.log("VideoTracks", stream.getVideoTracks())
@@ -24,12 +23,12 @@ function initCameraContext() {
         var ctracker = new clm.tracker()
         ctracker.init()
         ctracker.start(video)
+        positionLoop()
         function positionLoop() {
             requestAnimationFrame(positionLoop)
             var positions = ctracker.getCurrentPosition()
             console.log(positions)
         }
-        positionLoop()
     }).catch(function (err) {
         console.log('Rejected!', err)
     })

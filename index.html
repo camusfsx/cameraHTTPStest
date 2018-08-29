@@ -8,8 +8,9 @@
     <meta name="mobile-web-app-capable" content="yes">
     <title>camera-API-test!</title>
     <link rel=stylesheet type="text/css" href="css/style.css">
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clmtrackr/1.0.2/clmtrackr.min.js" defer></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="js/clmtrackr.js"></script>
+    <script type="module" src="js/clmtrackr.module.js"></script>
     <script src="js/main.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
@@ -21,8 +22,8 @@
     </header>
 
     <section class="cameraZoom">
-        <video id="inputVideo"  autoplay
-        playsinline webkit-playsinline loop>
+        <video id="video" autoplay playsinline webkit-playsinline loop>
+            <source>
         </video>
         <form method=post action=/scan-image class=cameraForm>
             <input type=file accept=image/* capture=camera id=inputButton class=cameraInput>
@@ -31,7 +32,7 @@
 
     <footer>
         <div id="cameraFlip"></div>
-        <h4>更改摄像头</h4> 
+        <h4>更改摄像头</h4>
     </footer>
 
 </body>
