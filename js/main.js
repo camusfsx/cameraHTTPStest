@@ -29,8 +29,10 @@ function initCameraContext() {
                 requestAnimationFrame(positionLoop)
                 var positions = ctracker.getCurrentPosition()
                 if(positions){
+                    canvasInput.style.display = `inline-block`
                     feedBackText.textContent = `已检测到面部`
                 }else{
+                    canvasInput.style.display = `none`
                     feedBackText.textContent = `面部丢失`
                 }
             }
