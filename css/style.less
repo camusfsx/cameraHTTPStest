@@ -12,6 +12,7 @@ body{
     font-size: 16px;
     word-break: keep-all;
     background-color: #eee;
+    justify-content: center;
 }
 header{
     .px2rem(margin-top,100);
@@ -42,16 +43,27 @@ header>h3{
     width :100%;
     .px2rem(height ,400);
 }
-footer{
+.Flip{
     display: flex;
     justify-content: center;
     .px2rem(margin-top,100);
     .px2rem(margin-bottom,100);
 }
-footer>#cameraFlip{
+.Flip>#cameraFlip{
     .px2rem(width,50);
     .px2rem(height,50);
     border-radius: 10px;
     background-color:#c0f0d0;
     box-shadow: 0px 0px 2px 0px rgb(4, 5, 4);
+}
+#drawCanvas{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width :100%;
+    .px2rem(height ,400);
+}
+footer>h4{
+    text-align: center;
 }

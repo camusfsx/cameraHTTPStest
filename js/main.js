@@ -1,6 +1,11 @@
+var video = document.getElementById(`video`)
 var ctracker = new clm.tracker()
+var canvasInput = document.getElementById(`drawCanvas`)
+var canvasContent = canvasInput.getContext(`2d`)
+var feedBackText = document.getElementById(`feedBack`)
 var front = true
 ctracker.init()
+ctracker.start(video)
 initCameraContext()
 document.getElementById('cameraFlip').onclick = () => {
     front = !front
@@ -16,17 +21,25 @@ function initCameraContext() {
         },
         audio: false
     }).then(function (stream) {
-        var video = document.getElementById(`video`)
         video.srcObject = stream
         video.onloadedmetadata = function (e) {
             console.log("VideoTracks", stream.getVideoTracks())
-            ctracker.start(video)
             positionLoop()
             function positionLoop() {
                 requestAnimationFrame(positionLoop)
                 var positions = ctracker.getCurrentPosition()
-                console.log(positions)
+                if(positions){
+                    feedBackText.textContent = `已检测到面部`
+                }else{
+                    feedBackText.textContent = `面部丢失`
+                }
             }
+            function drawLoop() {
+                requestAnimationFrame(drawLoop)
+                canvasContent.clearRect(0, 0, canvasInput.width, canvasInput.height)
+                ctracker.draw(canvasInput)
+            }
+            drawLoop()
         }
     }).catch(function (err) {
         console.log('Rejected!', err)

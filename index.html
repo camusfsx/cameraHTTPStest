@@ -10,7 +10,7 @@
     <link rel=stylesheet type="text/css" href="css/style.css">
     <script src="https://webrtc.github.io/adapter/adapter-latest.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/clmtrackr.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/main.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="./js/main.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
 <body>
@@ -21,20 +21,22 @@
     </header>
 
     <section class="cameraZoom">
-        <video id="video" autoplay loop playsinline webkit-playsinline >
+        <video id="video" width="400" height="300" autoplay loop playsinline webkit-playsinline>
         </video>
         <form method=post action=/scan-image class=cameraForm>
             <input type=file accept=image/* capture=camera id=inputButton class=cameraInput>
         </form>
+        <canvas id="drawCanvas" width="400" height="300"></canvas>
     </section>
-
-    <footer>
+    <section class="Flip">
         <div id="cameraFlip"></div>
         <h4>更改摄像头</h4>
+    </section>
+    <footer>
+        <h4 id = "feedBack">正在检测</h4>
     </footer>
-
 </body>
-<script>
+<script type="text/javascript">
     let pageWidth = window.innerWidth / 6.4
     document.write(`<style>html{font-size:${pageWidth}px}</style>`)
 </script>
