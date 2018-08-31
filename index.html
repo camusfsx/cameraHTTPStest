@@ -9,7 +9,8 @@
     <title>camera-API-test!</title>
     <link rel=stylesheet type="text/css" href="css/style.css">
     <script src="https://webrtc.github.io/adapter/adapter-latest.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/clmtrackr.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/clmtrackr.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/vconsole.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/main.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
@@ -40,5 +41,9 @@
     let pageWidth = window.innerWidth / 6.4
     document.write(`<style>html{font-size:${pageWidth}px}</style>`)
 </script>
-
+<script>
+    // 初始化
+    var vConsole = new VConsole();
+    console.log('Hello world');
+  </script>
 </html>
