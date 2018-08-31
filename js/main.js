@@ -47,12 +47,13 @@ function initCameraContext() {
         console.log('Rejected!', err)
     })
 }
-
-if (navigator.mediaDevices) {
+var ua =  navigator.userAgent
+    console.log(ua)
+if (navigator.mediaDevices.getUserMedia) {
     console.log(`browser support`)
 } else if (navigator.getUserMedia) {
     console.log(`browser support`)
 } else {
-    alert(`Your browser does not seem to support getUserMedia`)
+    console.log(`Your browser does not seem to support getUserMedia`)
 }
 
